@@ -33,7 +33,7 @@ def toMatrix(location):
 #Takes the image we loaded and standardize scaling, dimensions, etc.
 #Preprocessing for training set (for now)
 def standardize(image):
-    return 0
+    return None
 
 def main():
     print(train_foods)
