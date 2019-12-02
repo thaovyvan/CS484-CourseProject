@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+from keras.preprocessing.image import ImageDataGenerator
 from PIL import Image
 from skimage import filters
 from skimage.color.adapt_rgb import adapt_rgb, each_channel, hsv_value
@@ -28,6 +29,11 @@ def toMatrix(location):
             temp.append(pix_val[y])
         pix_matrix.append(temp)
     return pix_matrix
+
+#Takes the image we loaded and standardize scaling, dimensions, etc.
+#Preprocessing for training set (for now)
+def standardize(image):
+    return 0
 
 def main():
     print(train_foods)
