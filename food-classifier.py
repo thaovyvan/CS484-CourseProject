@@ -2,7 +2,7 @@
 #from keras.models import Sequential
 #from keras.layers import Convolution2D
 import math
-from scipy.misc import imresize
+from scipy.misc import imresize, imread
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -36,13 +36,15 @@ def toMatrix(location):
 #Takes the image we loaded and standardize scaling, dimensions, etc.
 #Preprocessing for training set (for now)
 def standardize(image, min):
-    new_image = image
+    new_image = imread('./food41/images/'+ image + '.jpg')
     try:
-        width, height, _ = image.shape
+        width, height, z = image.shape
         if (width < min):
-            new_image = imresize()
+            x = int((float(height)*float(min/float(width))))
+            new_image = imresize(new_image, (min, x))
         elif(height< min):
-            new_iamge = imresize()
+            yy = int((float(width)*float(min/float(height))))
+            new_image = imresize(new_image, (min, y))
 
     except:
         print("Image error. Skipping...")
