@@ -2,6 +2,7 @@
 #from keras.models import Sequential
 #from keras.layers import Convolution2D
 import math
+from scipy.misc import imresize
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -18,6 +19,7 @@ train_foods = trainData.read().splitlines()
 
 #Takes the image and turns it into multidimensional list
 #that is based off of the image's width and height
+    '''
 def toMatrix(location):
     image = Image.open('./food41/images/'+location + '.jpg', 'r')
     width, height = image.size
@@ -29,16 +31,32 @@ def toMatrix(location):
             temp.append(pix_val[y])
         pix_matrix.append(temp)
     return pix_matrix
+    '''
 
 #Takes the image we loaded and standardize scaling, dimensions, etc.
 #Preprocessing for training set (for now)
-def standardize(image):
-    return None
+def standardize(image, min):
+    new_image = image
+    try:
+        width, height, _ = image.shape
+        if (width < min):
+            new_image = imresize()
+        elif(height< min):
+            new_iamge = imresize()
+
+    except:
+        print("Image error. Skipping...")
+    return new_image
 
 def main():
+    resized_array = []
     print(train_foods)
     print("HELLOLOLOL0 CHIKCHENS")
-    img = toMatrix(train_foods[0])
+    for line in train_foods:
+        image = Image.open('./food41/images/'+ line + '.jpg', 'r')
+        new_image = standarize(image, 300)
+        resized_array.add(new_image)
+    #img = toMatrix(train_foods[0])
     #classifier = Sequential()
 
 main()
